@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AutoVerse | Luxury Automotive Experience</title>
+
+    <meta name="description"
+        content="Explore luxury automobiles in an immersive real-time 3D experience powered by Three.js.">
+
+    <link rel="stylesheet" href="/src/styles/style.css">
+
+</head>
+
+<body>
+
+    <!-- ===================================== -->
+    <!-- Loading Screen -->
+    <!-- ===================================== -->
+
+    <div id="loadingScreen">
+
+        <h1>AUTOVERSE</h1>
+
+        <p>Experience Luxury</p>
+
+        <div class="loader">
+
+            <div id="loaderProgress"></div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- Navigation -->
+    <!-- ===================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            AUTOVERSE
+
+        </div>
+
+        <ul>
+
+            <li><a href="#home">Home</a></li>
+
+            <li><a href="#vehicles">Vehicles</a></li>
+
+            <li><a href="#configurator">Configurator</a></li>
+            <li><a href="#specifications">Specifications</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+    <!-- ===================================== -->
+    <!-- Hero -->
+    <!-- ===================================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+
+                NEW • BMW M4 Competition
+
+            </span>
+
+            <h1>
+
+                Experience Luxury
+                <br>
+                In Real-Time 3D
+
+            </h1>
+
+            <p>
+
+                Discover premium automobiles with immersive 3D visualization,
+                cinematic lighting, interactive hotspots, and advanced vehicle
+                customization—all inside your browser.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#vehicles" class="btn-primary">
+
+                    Explore Collection
+
+                </a>
+
+                <a href="#configurator" class="btn-secondary">
+
+                    Configure Vehicle
+
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+
+                    <h2>503 HP</h2>
+
+                    <span>Horsepower</span>
+
+                </div>
+
+                <div>
+
+                    <h2>3.5 s</h2>
+
+                    <span>0–100 km/h</span>
+
+                </div>
+
+                <div>
+
+                    <h2>290 km/h</h2>
+
+                    <span>Top Speed</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- ===================================== -->
+    <!-- Three.js Canvas -->
+    <!-- ===================================== -->
+
+    <div id="app"></div>
+
+    <!-- ===================================== -->
+    <!-- Vehicle Collection -->
+    <!-- ===================================== -->
+
+    <section id="vehicles" class="vehicle-showcase">
+
+        <div class="section-header">
+
+            <h2>Our Collection</h2>
+
+            <p>
+
+                Explore our premium lineup and instantly load each
+                vehicle into the interactive 3D showroom.
+
+            </p>
+
+        </div>
+
+        <div class="vehicle-grid">
+
+            <!-- BMW -->
+
+            <div class="vehicle-card">
+
+                <h3>BMW M4 Competition</h3>
+
+                <p>
+
+                    3.0L TwinPower Turbo Inline-6
+
+                </p>
+
+                <ul>
+
+                    <li>✔ 503 HP</li>
+
+                    <li>✔ AWD</li>
+
+                    <li>✔ 290 km/h</li>
+
+                </ul>
+
+                <button
+                    class="view3d-btn"
+                    data-car="0">
+
+                    View in 3D
+
+                </button>
+
+            </div>
+
+            <!-- Mercedes -->
+
+            <div class="vehicle-card">
+
+                <h3>Mercedes AMG GT3</h3>
+
+                <p>
+
+                    6.2L Naturally Aspirated V8
+
+                </p>
+
+                <ul>
+
+                    <li>✔ 577 HP</li>
+
+                    <li>✔ Track Focused</li>
+
+                    <li>✔ GT Racing</li>
+
+                </ul>
+
+                <button
+                    class="view3d-btn"
+                    data-car="1">
+
+                    View in 3D
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- Configurator -->
+    <!-- ===================================== -->
+
+    <section id="configurator">
+
+        <div class="section-header">
+
+            <h2>Vehicle Configurator</h2>
+
+            <p>
+
+                Personalize your vehicle in real time.
+
+            </p>
+
+        </div>
+
+        <div id="paintConfigurator"></div>
+
+        <div id="cameraControls">
+
+            <button id="frontCamera">
+
+                Front
+
+            </button>
+
+            <button id="rearCamera">
+
+                Rear
+
+            </button>
+
+            <button id="topCamera">
+
+                Top
+
+            </button>
+
+            <button id="freeCamera">
+
+                Free
+
+            </button>
+
+        </div>
+
+        <div id="lightingControls">
+
+            <button id="headlightsToggle">
+
+                Toggle Headlights
+
+            </button>
+
+            <button id="ambientToggle">
+
+                Toggle Ambient
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- Specifications -->
+    <!-- ===================================== -->
+
+    <section id="specifications">
+
+        <div class="section-header">
+
+            <h2>Specifications</h2>
+
+            <p>
+
+                Technical details update automatically
+                when a different vehicle is selected.
+
+            </p>
+
+        </div>
+
+        <div id="specs"></div>
+
+    </section>
+        <!-- ===================================== -->
+    <!-- Gallery -->
+    <!-- ===================================== -->
+
+    <section id="gallery">
+
+        <div class="section-header">
+
+            <h2>Gallery</h2>
+
+            <p>
+                A showcase of premium automotive design and engineering.
+            </p>
+
+        </div>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-card">
+                <h3>Front Profile</h3>
+            </div>
+
+            <div class="gallery-card">
+                <h3>Rear Design</h3>
+            </div>
+
+            <div class="gallery-card">
+                <h3>Interior</h3>
+            </div>
+
+            <div class="gallery-card">
+                <h3>Performance</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- About -->
+    <!-- ===================================== -->
+
+    <section id="about">
+
+        <div class="section-header">
+
+            <h2>About AutoVerse</h2>
+
+            <p>
+                Where engineering meets modern web technology.
+            </p>
+
+        </div>
+
+        <div class="about-content">
+
+            <p>
+
+                AutoVerse is a premium automotive visualization project
+                created to deliver an immersive real-time 3D experience.
+
+                Using Three.js, GSAP, and modern web technologies,
+                visitors can explore luxury vehicles through cinematic
+                lighting, interactive hotspots, and advanced
+                customization.
+
+            </p>
+
+            <div class="about-features">
+
+                <div class="feature-card">
+
+                    <h3>🚗 Premium 3D</h3>
+
+                    <p>
+                        Real-time interactive vehicle visualization.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <h3>⚡ Modern Technology</h3>
+
+                    <p>
+                        Built using Three.js, GSAP and Vite.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <h3>🌍 Responsive</h3>
+
+                    <p>
+                        Optimized for desktop and mobile devices.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- Contact -->
+    <!-- ===================================== -->
+
+    <section id="contact" class="contact-section">
+
+        <div class="section-header">
+
+            <h2>Contact Me</h2>
+
+            <p>
+                Have a project, collaboration, or question?
+                I'd love to hear from you.
+            </p>
+
+        </div>
+
+        <div class="contact-container">
+
+            <!-- Contact Information -->
+
+            <div class="contact-info">
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">📧</div>
+
+                    <div>
+
+                        <h3>Email</h3>
+
+                        <a href="mailto:sr7762203@gmail.com">
+                            sr7762203@gmail.com
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">📱</div>
+
+                    <div>
+
+                        <h3>Phone</h3>
+
+                        <a href="tel:+918149201071">
+                            +91 81492 01071
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">📍</div>
+
+                    <div>
+
+                        <h3>Location</h3>
+
+                        <p>
+                            Maharashtra, India
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Contact Form -->
+
+            <form class="contact-form">
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <input
+                    type="text"
+                    placeholder="Subject"
+                    required
+                >
+
+                <textarea
+                    rows="6"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+                <button
+                    class="send-btn"
+                    type="submit">
+
+                    Send Message
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- Footer -->
+    <!-- ===================================== -->
+
+    <footer>
+
+        <h2>AUTOVERSE</h2>
+
+        <p>
+            Luxury Automotive Experience
+        </p>
+
+        <p>
+            Built by <strong>Sanskar Raut</strong>
+        </p>
+
+        <p>
+
+            © 2026 AutoVerse. All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+    <!-- ===================================== -->
+    <!-- Hotspot Panel -->
+    <!-- ===================================== -->
+
+    <div id="hotspotInfo" class="hotspot-panel">
+
+        <h2 id="hotspotTitle"></h2>
+
+        <p id="hotspotDescription"></p>
+
+        <button id="closeHotspot">
+
+            Close
+
+        </button>
+
+    </div>
+
+    <!-- Main Script -->
+
+    <script type="module" src="/src/main.js"></script>
+
+</body>
+
+</html>
