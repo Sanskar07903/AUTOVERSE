@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { setupPaintConfigurator } from "../features/paint";
-import { printModelStructure } from "../utils/debugModel";
+
 
 export let vehicle = null;
 
@@ -117,7 +117,7 @@ export function loadVehicle(
             // Setup
             // -----------------------------
 
-            printModelStructure(vehicle);
+            
 
             setupPaintConfigurator(vehicle);
 
