@@ -107,7 +107,8 @@ function showCar() {
 
     );
 
-    updateCarInfo(cars[currentCar].file);
+    // updateCarInfo(cars[currentCar].file);
+    
 
     // Smoothly focus the 3D viewer
     camera.position.set(9, 4.5, 9);
