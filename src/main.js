@@ -169,17 +169,10 @@ setupLighting();
 // ====================
 
 document.querySelectorAll(".view3d-btn").forEach((button) => {
-
-    button.style.background = "red";
-
-    button.onclick = () => {
-
-        document.body.style.background = "green";
-
-        alert("CLICKED");
-
-    };
-
+    button.addEventListener("click", () => {
+        currentCar = Number(button.dataset.car);
+        showCar();
+    });
 });
 // ====================
 // GSAP Animations
