@@ -6,13 +6,21 @@ export function updateCarInfo(file) {
 
     if (!car) return;
 
-    document.getElementById("brand").textContent = car.brand;
-    document.getElementById("model").textContent = car.model;
-    document.getElementById("power").textContent = car.power;
-    document.getElementById("speed").textContent = car.topSpeed;
-    document.getElementById("price").textContent = car.price;
-    document.getElementById("engine").textContent = car.engine;
-    document.getElementById("drivetrain").textContent = car.drivetrain;
-    document.getElementById("acceleration").textContent = car.acceleration;
+    function setText(id, value) {
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = value;
+        }
+    }
+
+    setText("brand", car.brand);
+    setText("model", car.model);
+    setText("power", car.power);
+    setText("speed", car.topSpeed);
+    setText("price", car.price);
+    setText("engine", car.engine);
+    setText("drivetrain", car.drivetrain);
+    setText("acceleration", car.acceleration);
 
 }
